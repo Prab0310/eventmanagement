@@ -1,0 +1,253 @@
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 3px;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: url('../css/background-features.53fbc82b.jpg' ) no-repeat center center/cover;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding-top: 50px;
+}
+
+
+
+
+/* linear-gradient(135deg, #4b6cb7, #182848 */
+/* Header & Navigation */
+header {
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  background: #1e325a;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+nav {
+  margin-top: 10px;
+}
+
+nav a {
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+nav a:hover {
+  color: #ffcc00;
+}
+
+/* Main Content */
+main {
+  width: 80%;
+  margin: 40px auto;
+  text-align: center;
+}
+
+h2 {
+  font-size: 26px;
+  color: black;
+  margin-bottom: 20px;
+}
+
+/* Form Styles */
+.container {
+  width: 100%;
+  max-width: 700px;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+}
+
+label {
+  font-weight: 600;
+  color: #182848;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #4b6cb7;
+  box-shadow: 0 0 5px rgba(75, 108, 183, 0.5);
+}
+
+/* Buttons */
+button, .btn {
+  background: linear-gradient(135deg, #c704c1, #feb47b);
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: 0.3s ease-in-out;
+}
+
+button:hover, .btn:hover {
+  background: linear-gradient(135deg, #ffcc00, #db1fec);
+  transform: scale(1.05);
+}
+
+/* Event List */
+ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+li {
+  background: linear-gradient(135deg, #ffffff, #e6e6fa);
+  padding: 25px;
+  border-radius: 15px;
+  width: 340px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: left 0.5s;
+}
+
+li:hover::before {
+  left: 100%;
+}
+
+li:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+}
+
+li h3 {
+  color: #182848;
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+li p {
+  font-size: 17px;
+  color: #333;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+li p strong {
+  color: #ff7e5f;
+  font-weight: 700;
+}
+
+li button {
+  background: linear-gradient(135deg, #ff7e5f, #feb47b);
+  color: white;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: 0.3s ease-in-out;
+  margin-top: 10px;
+}
+
+li button:hover {
+  background: linear-gradient(135deg, #ffcc00, #ff9900);
+  transform: scale(1.07);
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #f6f6f7;
+  border: 2px solid rgb(6, 6, 6);
+}
+
+table th, table td {
+  padding: 0.7rem;
+  text-align: left;
+  border-bottom: 2px solid rgb(6, 6, 6);
+  border-right:  2px solid rgb(6, 6, 6);
+}
+
+/* Footer */
+footer {
+  width: 100%;
+  padding: 25px;
+  text-align: center;
+  background: #182848;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+footer p {
+  margin: 0;
+  font-size: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  main {
+    width: 95%;
+  }
+
+  .container {
+    width: 90%;
+    padding: 20px;
+  }
+}
+
+
+
+
+
+
+
+
+

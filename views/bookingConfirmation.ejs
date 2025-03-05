@@ -1,0 +1,38 @@
+<!-- views/bookingConfirmation.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Booking Confirmation</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Booking Confirmation</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/auth/logout">Logout</a>
+    </nav>
+  </header><br><br>
+  <main>
+    <center><div class="container">
+    <section>
+      <h2>Thank you for your booking!</h2>
+      <p>Your booking details:</p>
+      <br><br>
+      <ul>
+        <li><strong>Event:</strong> <%= booking.event_title %></li>
+        <li><strong>Seat Number:</strong> <%= booking.seat_number %></li>
+        <li><strong>Payment Status:</strong> <%= booking.payment_status %></li>
+        <li><strong>Booking Date:</strong> <%= new Date(booking.booking_date).toLocaleString() %></li>
+      </ul>
+      <!-- <br><br>
+      <p>Please check your email for further details.</p> -->
+    </section>
+  </div></center>
+  </main><br><br>
+  <footer>
+    <p>&copy; 2025 Event Management System</p>
+  </footer>
+</body>
+</html>

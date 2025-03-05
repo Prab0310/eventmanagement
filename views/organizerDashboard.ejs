@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Organizer Dashboard</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    .btn {
+      display: inline-block;
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: bold;
+      text-decoration: none;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 5px;
+     
+      text-align: center;
+      min-width: 100px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      font-weight: bold;
+      font-size: 16px;
+
+    }
+
+    
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Organizer Dashboard</h1>
+    <nav>
+      <a href="/">Home</a> |
+      <a href="/auth/logout">Logout</a> |
+      <a href="/events/manage">Dashboard</a> |
+    </nav>
+  </header>
+  
+  <main>
+    <h2 style=" font-size: 36px; color: #fcfbfb;">Your Events</h2>
+    
+    <!-- Create New Event Button -->
+    <a href="/events/create" class="btn btn-create">Create New Event</a>
+    <br><br><br>
+    
+    <ul>
+      <% if (events && events.length > 0) { %>
+        <% events.forEach(event => { %>
+          <li>
+            <h3><%= event.title %></h3>
+            <p><%= event.description.substring(0, 100) %>...</p>
+            <p>Date: <%= new Date(event.event_date).toLocaleString() %></p>
+            <p>Location: <%= event.location %></p>
+            <p>Price: $<%= event.price %></p>
+            
+            <!-- Edit and Delete Buttons -->
+            <a href="/events/edit/<%= event.event_id %>" class="btn btn-edit">Edit</a>
+            <a href="/events/delete/<%= event.event_id %>" class="btn btn-delete" onclick="return confirm('Are you sure to delete this event?')">Delete</a>
+          </li>
+          <br>
+        <% }); %>
+      <% } else { %>
+        <li>No events created yet.</li>
+      <% } %>
+    </ul>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Event Management System</p>
+  </footer>
+</body>
+</html>

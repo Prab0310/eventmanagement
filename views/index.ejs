@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Management - Home</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script>
+    function checkLogin(isLoggedIn, targetUrl) {
+      if (isLoggedIn === 'true') {
+        window.location.href = targetUrl;
+      } else {
+        alert("You must log in to access this page.");
+      }
+    }
+  </script>
+  
+</head>
+<body>
+  <header>
+    <h1>Eventsphere</h1>
+    <nav>
+      <% if (user) { %>
+        <span>Welcome, <%= user.name %>!</span> |
+        <a href="/auth/logout">Logout</a> |
+      <% } else { %>
+        <a href="/auth/login">Login</a> |
+        <a href="/auth/register">Register</a> |
+      <% } %>
+      <!-- <a href="javascript:void(0);" onclick="checkLogin('<%= user ? true : false %>', '/admin/dashboard')">Admin Dashboard</a> | -->
+      <a href="javascript:void(0);" onclick="checkLogin('<%= user ? true : false %>', '/events/manage')">Organizer Dashboard</a> |
+      <a href="/events">Events</a>
+    </nav>
+    
+    
+  </header>
+  <main>
+
+    
+    
+
+    <big><h1 style="color: white;">Upcoming Events</h1></big><br>
+
+    <ul>
+      <% if (events && events.length > 0) { %>
+        <% events.forEach(event => { %>
+          <li>
+            <h3><%= event.title %></h3>
+            <p><%= event.description.substring(0, 100) %>...</p>
+            <p>Date: <%= new Date(event.event_date).toLocaleString() %></p>
+            <p>Location: <%= event.location %></p>
+            <p>Price: $<%= event.price %></p>
+            <p>Available Seats: <%= event.available_seats %></p> 
+            
+            <a href="javascript:void(0);" class="btn" onclick="checkLogin('<%= user ? true : false %>', '/events/event/<%= event.event_id %>')">Book Tickets</a>
+          </li>
+        <% }); %>
+      <% } else { %>
+        <li>No events available.</li>
+      <% } %>
+    </ul>
+  </main>
+  <footer>
+    <p>&copy; 2025 Event Management System</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!-- views/register.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register - Event Management</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script>
+    function validateForm(event) {
+      event.preventDefault(); // Prevent form submission
+
+      let name = document.getElementById("name").value.trim();
+      let email = document.getElementById("email").value.trim();
+      let password = document.getElementById("password").value;
+      let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      let passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+      let errors = [];
+
+      if (!emailRegex.test(email)) {
+        errors.push("Enter a valid email address.");
+      }
+
+      if (!passwordRegex.test(password)) {
+        errors.push("Password must contains at least one lowercase letter, one uppercase letter, one number, and one special character.");
+      }
+
+      if (errors.length > 0) {
+        document.getElementById("error-message").innerHTML = errors.join("<br>");
+        return false;
+      }
+
+      event.target.submit(); // Submit the form if validation passes
+    }
+  </script>
+</head>
+<body>
+
+  <header>
+    <h1>Register</h1>
+    <nav>
+      <a href="/">Home</a> |
+      <a href="/auth/login">Login</a>
+    </nav>
+  </header>
+  <br>
+
+  <main>
+    <center>
+      <div class="container">
+        <form id="registerForm" action="/auth/register" method="POST" onsubmit="return validateForm(event)">
+          <center><h1>Register</h1></center>
+
+          <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+
+          <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+
+          <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+          </div>
+
+          <div>
+            <label for="role">Role:</label>
+            <select id="role" name="role">
+              <option value="attendee" selected>Attendee</option>
+              <option value="organizer">Organizer</option>
+              <option value="admin" style="display: none;">Admin</option>
+            </select>
+          </div>
+
+          <p id="error-message" style="color: red;"></p>
+          <button type="submit">Register</button>
+        </form>
+        <br>
+        <center><p>Already have an account? <a href="/auth/login">Login</a></p></center>
+      </div>
+    </center>
+  </main>
+
+  <br><br>
+  <footer>
+    <p>&copy; 2025 Event Management System</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!-- views/adminDashboard.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard - Event Management</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script>
+    function showAlert() {
+      alert('You have to login as an attendee to book a seat for the event.');
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Admin Dashboard</h1>
+    <nav>
+      <a href="/">Home</a> |
+      <a href="/auth/logout">Logout</a>
+    </nav>
+  </header>
+  <main>
+    <center><div class="container" style="width: 80%;">
+    <section>
+      <h2>Manage Events</h2>
+      <table border="1" cellpadding="10">
+        <thead>
+          <tr>
+            <th>Event Title</th>
+            <th>Date</th>
+            <th>Location</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (events && events.length > 0) { %>
+            <% events.forEach(event => { %>
+              <tr>
+                <td><%= event.title %></td>
+                <td><%= new Date(event.event_date).toLocaleString() %></td>
+                <td><%= event.location %></td>
+                <td>
+                  <% if (user && user.role === 'admin') { %>
+                    <button onclick="showAlert()">Book a seat</button>
+                  <% } else { %>
+                    <a href="/events/event/<%= event.event_id %>">View</a>
+                  <% } %>
+                </td>
+              </tr>
+            <% }); %>
+          <% } else { %>
+            <tr>
+              <td colspan="4">No events available.</td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </section>
+    <br><br>
+    <!-- <section> -->
+       <!-- <h2>Attendee List</h2>
+      <table border="1" cellpadding="10">
+        <thead>
+          <tr>
+            <th>Event</th>
+            <th>Attendee Name</th>
+            <th>Email</th>
+            <th>Registration Date</th>
+          </tr>
+        </thead> 
+         <tbody>
+          <% if (attendees && attendees.length > 0) { %>
+            <% attendees.forEach(attendee => { %>
+              <tr>
+                <td><%= attendee.event_title %></td>
+                <td><%= attendee.name %></td>
+                <td><%= attendee.email %></td>
+                <td><%= new Date(attendee.registration_date).toLocaleString() %></td>
+              </tr>
+            <% }); %>
+          <% } else { %>
+            <tr>
+              <td colspan="4">No attendees found.</td>
+            </tr>
+          <% } %>
+        </tbody> 
+      </table> -->
+    <!-- </section> -->
+    </div></center>
+  </main>
+  <footer>
+    <p>&copy; 2025 Event Management System</p>
+  </footer>
+</body>
+</html>

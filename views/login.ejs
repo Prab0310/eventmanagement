@@ -1,0 +1,38 @@
+<!-- views/login.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Event Management</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Login</h1>
+    <nav>
+      <a href="/">Home</a> |
+      <a href="/auth/register">Register</a>
+    </nav>
+  </header>
+  <main>
+    <center><div class="container">
+    <form action="/auth/login" method="POST">
+      <div>
+        <center> <h1>Login</h1></center><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+      </div>
+      <button type="submit">Login</button>
+    </form><br>
+    <center><p>Don't have an account? <a href="/auth/register">Register</a></p></center>
+    </div></center>
+  </main>
+  <footer>
+    <p>&copy; 2025 Event Management System</p>
+  </footer>
+</body>
+</html>

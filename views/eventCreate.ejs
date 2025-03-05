@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create New Event</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Create New Event</h1>
+    <nav>
+      <a href="/events/manage">Back to Dashboard</a>
+    </nav>
+  </header><br><br><br>
+  <main>
+    <center><div class="container">
+    <form action="/events/event/create" method="POST">
+      <div>
+        <label for="category_id">Category:</label>
+        <select name="category_id" id="category_id" required>
+          <% if (categories && categories.length > 0) { %>
+            <% categories.forEach(category => { %>
+              <option value="<%= category.category_id %>">
+                <%= category.category_name %>
+              </option>
+            <% }); %>
+          <% } else { %>
+            <option value="">No categories available</option>
+          <% } %>
+        </select>
+      </div>
+      <div>
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required>
+      </div>
+      <div>
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required></textarea>
+      </div>
+      <div>
+        <label for="event_date">Event Date:</label>
+        <input type="datetime-local" id="event_date" name="event_date" required
+               min="<%= new Date().toISOString().slice(0, 16) %>">
+      </div>
+      
+      <div>
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" required>
+      </div>
+      <div>
+        <label for="available_seats">Available Seats:</label>
+        <input type="number" id="available_seats" name="available_seats" required>
+      </div>
+      <div>
+        <label for="price">Price:</label>
+        <input type="number" step="0.01" id="price" name="price" required>
+      </div>
+      <button type="submit">Create Event</button>
+    </form>
+    </div></center>
+  </main><br><br>
+  <footer>
+    <p>&copy; 2025 Event Management System</p>
+  </footer>
+</body>
+</html>
